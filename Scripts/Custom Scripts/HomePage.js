@@ -90,7 +90,7 @@ function openModal() {
 }
 
 function showModal() {
-    if (localStorage.getItem('access_token')) {
+    if (localStorage.getItem('expires') != undefined && localStorage.getItem('expires') != 'undefined') {
         let expiryDate = new Date(localStorage.getItem('expires'));
         let currentDate = new Date();
         if (expiryDate.getTime() < currentDate.getTime()) {
@@ -152,13 +152,19 @@ function registerUser() {
 
 function getToken() {
     $("#loaderClass").removeClass('hide');
-    let _data = 'username=' + $('#userName').val() + '&password=' + $('#password').val() + '&grant_type=password';
+    let _data = JSON.stringify({
+        'UserName': $('#userName').val(),
+        'Password': $('#password').val()
+    });
     $.ajax({
-        url: window.location.origin + '/token',
+        url: window.location.origin + '/api/account/login',
+        headers: {
+            'content-type': 'application/json; charset=utf8'
+        },
         method: 'POST',
         data: _data,
         success: function (jqXHR) {
-            localStorage.setItem('access_token', jqXHR['access_token']);
+            /*localStorage.setItem('access_token', jqXHR['access_token']);*/
             localStorage.setItem('expires', jqXHR['.expires']);
             localStorage.setItem('issued', jqXHR['.issued']);
             localStorage.setItem('userName', jqXHR['userName']);

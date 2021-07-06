@@ -26,8 +26,15 @@ namespace Chat_Messenger.Controllers
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
+        public static List<UserInfo> RegisteredUsers;
+
         public AccountController()
         {
+        }
+
+        static AccountController()
+        {
+            RegisteredUsers = new List<UserInfo>();
         }
 
         public AccountController(ApplicationUserManager userManager,
@@ -318,24 +325,67 @@ namespace Chat_Messenger.Controllers
             return logins;
         }
 
+        // POST api/Account/Login
+        [AllowAnonymous]
+        [Route("Login")]
+        public IHttpActionResult Login(dynamic model)
+        {
+            dynamic response = new System.Dynamic.ExpandoObject();
+            var user = RegisteredUsers.Find(x => x.userName == model.userName);
+
+            if (user != null)
+            {
+                response[".expires"] = DateTime.Now.AddHours(8);
+                response[".issued"] = DateTime.Now;
+                response["userName"] = user.userName;
+                return Ok(response);
+            }
+            else
+            {
+                response.error_description = "User does not Exist!";
+                return Content(System.Net.HttpStatusCode.BadRequest, response);
+            }
+
+            //var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
+
+            //IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            //if (!result.Succeeded)
+            //{
+            //    return GetErrorResult(result);
+            //}
+
+            return Ok();
+        }
+
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(RegisterBindingModel model)
+        public IHttpActionResult Register(RegisterBindingModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
+            var user = RegisteredUsers.Find(x => x.userName == model.UserName);
 
-            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-
-            if (!result.Succeeded)
+            if (user != null)
             {
-                return GetErrorResult(result);
+                ModelState.AddModelError("", "User already Exists!");
+                return BadRequest(ModelState);
             }
+
+            RegisteredUsers.Add(new UserInfo() { userName = model.UserName, emailId = model.Email, password = model.Password });
+
+            //var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
+
+            //IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            //if (!result.Succeeded)
+            //{
+            //    return GetErrorResult(result);
+            //}
 
             return Ok();
         }
@@ -490,5 +540,12 @@ namespace Chat_Messenger.Controllers
         }
 
         #endregion
+    }
+
+    public class UserInfo
+    {
+        public string userName { get; set; }
+        public string emailId { get; set; }
+        public string password { get; set; }
     }
 }
