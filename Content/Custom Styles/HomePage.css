@@ -1,5 +1,4 @@
 ﻿body {
-    /*background-color: red;*/
     margin: 0px;
     font-family: 'Roboto Slab', serif;
 }
@@ -56,26 +55,21 @@
 }
 
 .title {
-   /* border: 1px solid #ddd;*/
     color: #555555;
     cursor: default;
-    /*background-color: #fff;*/
     border-radius: 4px 4px 0 0;
     text-align: center;
     height: 100%;
     position: relative;
     display: block;
-/*    padding: 10px 15px;*/
     margin: 0;
     font-family: 'Ubuntu', cursive;
     font-size: x-large;
-   /* background-color: #4CB5F5;*/
     color: white;
     text-shadow: 3px 3px 3px black;
 }
 
 .left-panel {
-    /*flex: 20%;*/
     flex: 5%;
     height: 100%;
     background-color: #375E97;
@@ -83,7 +77,6 @@
 }
 
 .right-panel {
-    /*flex: 80%;*/
     flex: 55%;
     height: 100%;
     background-color: #d7d7e8;
@@ -106,7 +99,6 @@
 
 .fake-img {
     background-color: dimgrey;
-    /*flex: 12% 1;*/
     flex: 3% 1;
     height: 67px;
     align-self: center;
@@ -137,7 +129,6 @@
 
 .custom-inputtextarea {
     border-radius: 11px;
-    /*box-shadow: 2px 2px 2px #8c8383, -2px -2px 2px #8c8383, -2px 2px 2px #8c8383, 2px -2px 2px #8c8383;*/
     border: 0px;
     flex: 90%;
     padding: 14px 14px 10px 14px;
@@ -151,7 +142,6 @@
 
     .custom-inputtextarea:focus, .custom-inputtextarea:active:focus, .custom-inputtextarea:focus-visible {
         border-radius: 10px;
-        /* border: 1px solid black;*/
         outline: 0px;
     }
 
@@ -161,14 +151,12 @@
     margin-left: 4px;
     border-radius: 10px;
     border: 0px;
-    /*box-shadow: 2px 2px 2px #8c8383, -2px -2px 2px #8c8383, -2px 2px 2px #8c8383, 2px -2px 2px #8c8383;*/
     font-size: 2em;
     background: transparent;
 }
 
     .custom-button:focus, .custom-button:active:focus, .custom-button:focus-visible {
         border-radius: 10px;
-       /* border: 1px solid black;*/
         outline: 0px;
     }
 
@@ -179,7 +167,6 @@ input:focus-visible {
 }
 
 #custom-table-body2 tr td {
-    /* padding: 10px;*/
     padding: 5px;
 }
 
@@ -201,7 +188,6 @@ input:focus-visible {
 }
 
 .custom-card-body {
-    /*    width: 100%;*/
     display: flex;
     flex-flow: row wrap;
     border: 1px solid #717171;
@@ -214,7 +200,6 @@ input:focus-visible {
 
 #cardFooter {
     background-color: #6dce1a;
-   /* background-color: #3F681C;*/
 }
 
 .modal-dialog {
@@ -257,7 +242,6 @@ input:focus-visible {
 
 .floating-div {
     top: 90%;
-    /* left: 14%;*/
     left: 20%;
     position: absolute;
     cursor: pointer !important;
@@ -470,14 +454,6 @@ input:focus-visible {
 }
 
 @media only screen and (max-width: 750px) {
-/*    .card-details {
-        flex: 36%;
-    }
-
-    #cardDetails {
-        flex: 78%;
-    }
-*/
     .right-panel {
         flex: 48.5%;
     }
@@ -509,10 +485,6 @@ input:focus-visible {
     .main {
         width: 700px;
     }
-
-/*    .floating-div {
-        left: 20%;
-    }*/
 }
 
 @media only screen and (max-width: 699px) {
@@ -528,58 +500,3 @@ input:focus-visible {
         height: 88.6vh;
     }
 }
-
-    /*@media only screen and (max-width: 670px) {
-    .card-details {
-        flex: 26%;
-    }
-
-    #cardDetails {
-        flex: 74%;
-    }
-}
-
-@media only screen and (max-width: 650px) {
-    .card-details {
-        flex: 30%;
-    }
-
-    #cardDetails {
-        flex: 70%;
-    }
-}
-
-
-@media only screen and (max-width: 600px) {
-    .card-details {
-        flex: 24%;
-    }
-
-    #cardDetails {
-        flex: 68%;
-    }
-}
-
-@media only screen and (max-width: 570px) {
-    .card-details {
-        flex: 20%;
-    }
-
-    #cardDetails {
-        flex: 66%;
-    }
-}
-
-@media only screen and (max-width: 550px) {
-    .card-details {
-        flex: 16%;
-    }
-
-    #cardDetails {
-        flex: 64%;
-    }
-
-    .right-panel {
-        flex: 42%;
-    }
-}*/
