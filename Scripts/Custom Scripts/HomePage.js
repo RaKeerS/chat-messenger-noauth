@@ -187,7 +187,7 @@ function addEventListeners() {
 
             sendMessage();
         }
-    }); 
+    });
 }
 
 function sendMessage() {
@@ -289,7 +289,6 @@ function initiateSignalR() {
 
     commonBridge.on('messageReceived', (senderUserName, receiverUserName, message) => {
         // We sent the message to server and received the response here.
-        console.log('messageReceived', senderUserName, receiverUserName, message);
 
         if (localStorage.getItem('userName') == receiverUserName) {
             // Create list of Users on left panel

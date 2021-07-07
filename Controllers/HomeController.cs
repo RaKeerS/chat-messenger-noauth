@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -52,7 +49,6 @@ namespace Chat_Messenger.Controllers
             try
             {
                 var user = AccountController.RegisteredUsers.Find(x => x.userName == userName);
-                //IdentityUser user = await UserManager.FindByNameAsync(userName);
 
                 if (user == null)
                 {
@@ -62,7 +58,6 @@ namespace Chat_Messenger.Controllers
                 }
                 else
                 {
-                    //response.userId = user.userId;
                     response.userName = user.userName;
                     return Json(response);
                 }
@@ -77,7 +72,8 @@ namespace Chat_Messenger.Controllers
         }
     }
 
-    public struct messageBody {
+    public struct messageBody
+    {
         public string accessToken { get; set; }
         public string messageString { get; set; }
     }
