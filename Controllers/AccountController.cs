@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using Chat_Messenger.Models;
 using Chat_Messenger.Providers;
 using Chat_Messenger.Results;
+using Newtonsoft.Json;
 
 namespace Chat_Messenger.Controllers
 {
@@ -331,13 +332,19 @@ namespace Chat_Messenger.Controllers
         public IHttpActionResult Login(dynamic model)
         {
             dynamic response = new System.Dynamic.ExpandoObject();
-            var user = RegisteredUsers.Find(x => x.userName == model.userName);
+            var user = RegisteredUsers.Find(x => x.userName == (string)model.UserName);
 
             if (user != null)
             {
-                response[".expires"] = DateTime.Now.AddHours(8);
-                response[".issued"] = DateTime.Now;
-                response["userName"] = user.userName;
+                Properties propertyObj = new Properties();
+                propertyObj.expires = DateTime.Now.AddHours(8);
+                propertyObj.issued = DateTime.Now;
+                propertyObj.userName = user.userName;
+                response = propertyObj;
+
+                //response[".expires"] = DateTime.Now.AddHours(8);
+                //response[".issued"] = DateTime.Now;
+                //response.userName = user.userName;
                 return Ok(response);
             }
             else
@@ -547,5 +554,17 @@ namespace Chat_Messenger.Controllers
         public string userName { get; set; }
         public string emailId { get; set; }
         public string password { get; set; }
+    }
+
+    class Properties
+    {
+        [JsonProperty(".expires")]
+        public DateTime expires { get; set; }
+
+        [JsonProperty(".issued")]
+        public DateTime issued { get; set; }
+
+        [JsonProperty("userName")]
+        public string userName { get; set; }
     }
 }

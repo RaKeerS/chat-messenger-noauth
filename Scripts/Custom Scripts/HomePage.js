@@ -234,8 +234,13 @@ function connectUser() {
             userName: $('#connectToUserName').val()
         },
         success: function (jqXHR) {
-            let response = jqXHR;
-            userChatAccountsList.push({ userId: jqXHR[0].Value, userName: jqXHR[1].Value, message: _.cloneDeep(messageList) });
+            if (jqXHR[0].Key == 'error_description') {
+                $("#loaderClass").addClass('hide');
+                $('#connectToUserName').val('')
+                alert(jqXHR[1].Value);
+                return;
+            }
+            userChatAccountsList.push({ userId: '', userName: jqXHR[0].Value, message: _.cloneDeep(messageList) });
             getAllUserChatAccounts();
             $('#connectToUserName').val('')
             closeModal('chatConnectionModal');
@@ -244,6 +249,7 @@ function connectUser() {
         error: function (jqXHR) {
             console.error(JSON.parse(jqXHR));
             $('#connectToUserName').val('');
+            $("#loaderClass").addClass('hide');
         }
     })
 }

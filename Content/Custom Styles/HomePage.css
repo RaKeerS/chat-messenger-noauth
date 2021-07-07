@@ -185,6 +185,7 @@ input:focus-visible {
 
 .custom-header {
     font-family: 'Poppins', sans-serif;
+    font-size: 20px;
 }
 
 .custom-label {
