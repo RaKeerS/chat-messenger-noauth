@@ -87,9 +87,9 @@
                         <div class="modal-body">
                             <form>
                                 <label>User Name <label style="color: red;">*</label></label>
-                                <input id="userName" type="text" class="form-control" required />
+                                <input id="userName" autocomplete="on" type="text" class="form-control" required />
                                 <label>Password <label style="color: red;">*</label></label>
-                                <input id="password" type="password" class="form-control" required />
+                                <input id="password" autocomplete="off" type="password" class="form-control" required />
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -121,17 +121,15 @@
                             <h4 class="modal-title">Enter User Name to Chat with</h4>
                         </div>
                         <div class="modal-body">
-                            <form>
-                                <label>User Name <label style="color: red;">*</label></label>
-                                <input id="connectToUserName" type="text" class="form-control" required />
-                            </form>
+                            <label>User Name <label style="color: red;">*</label></label>
+                            <input id="connectToUserName" autocomplete="on" type="text" class="form-control" required />
                         </div>
                         <div class="modal-footer">
                             <button type="button" title="Close Connection" class="btn btn-primary pull-left"
                                     onclick="closeModal('chatConnectionModal')">
                                 Cancel
                             </button>
-                            <button type="submit" title="Connect" class="btn btn-success"
+                            <button type="button" title="Connect" class="btn btn-success"
                                     onclick="connectUser()">
                                 Connect
                             </button>

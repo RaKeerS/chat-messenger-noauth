@@ -179,7 +179,7 @@ function getToken() {
 }
 
 function addEventListeners() {
-    document.getElementById('messageBox').addEventListener("keyup", function (event) {
+    document.getElementById('messageBox').addEventListener('keyup', function (event) {
         // Number 13 is the "Enter" key on the keyboard
         if (event.keyCode == 13 && !event.shiftKey) {
             // Cancel the default action, if needed
@@ -188,6 +188,20 @@ function addEventListeners() {
             sendMessage();
         }
     });
+
+    document.getElementById('connectToUserName').addEventListener('keyup', function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode == 13) {
+            connectUser();
+        }
+    });
+}
+
+function connectToUser(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode == 13) {
+        connectUser();
+    }
 }
 
 function sendMessage() {
@@ -199,7 +213,6 @@ function sendMessage() {
     }
 
     commonBridge.invoke('sendMessageTo', localStorage.getItem('userName'), currentChatUserName, message).then(() => {
-        console.log('Invoked sendMessageTo successfully!');
         $('#messageBox').val('');
         getUserChat();
     }).catch( (err) => console.log(err));
@@ -296,7 +309,7 @@ function initiateSignalR() {
             if (userChatAccountsList.length == 0) {
                 userChatAccountsList.push({ userId: '', userName: senderUserName, message: _.cloneDeep(messageList) });
             }
-            else if (userChatAccountsList.length > 0 && userChatAccountsList.find(x => x.userName == senderUserName).length == 0) {
+            else if (userChatAccountsList.length > 0 && userChatAccountsList.find(x => x.userName == senderUserName) == undefined) {
                 userChatAccountsList.push({ userId: '', userName: senderUserName, message: _.cloneDeep(messageList) });
             }
 
