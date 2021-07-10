@@ -5,14 +5,16 @@ let commonBridge;
 let currentChatUserName = '';
 let isConversationWindowOpen = false;
 
+let currentChatId;
+
 /*********** Fn: Gets all active Chats on the left hand side ***********/
 function getAllUserChatAccounts() { 
     $("#custom-table-body1").empty();
     let chatAccounts = userChatAccountsList;
     for (i = 0; i < chatAccounts.length; i++) {
         $("#custom-table-body1").append(`
-        <tr class="clickable" onclick="openCoversation(this)">
-            <td style="padding: 3px; border-bottom: 1px solid grey">
+        <tr id="${'clickable-row-' + i}" class="clickable" onclick="openCoversation(this)">
+            <td class="custom-row1">
                 <div class="card-body dflex">
                     <div class="img-circle fake-img">
                         <img src="/assets/chat-avatar.png" class="image" alt="chat-avatar" />
@@ -24,6 +26,10 @@ function getAllUserChatAccounts() {
                 </div>
             </td>
         </tr>`);
+    }
+
+    if (currentChatId) {
+        $(currentChatId).css('background-color', '#ffc107');
     }
 
     if (isConversationWindowOpen) {
@@ -168,6 +174,8 @@ function getToken() {
             localStorage.setItem('expires', jqXHR['.expires']);
             localStorage.setItem('issued', jqXHR['.issued']);
             localStorage.setItem('userName', jqXHR['userName']);
+            $('#nameOfUser').text(localStorage.getItem('userName'));
+            $('#title').css('margin-left', '125px');
             $("#registerModal").modal('hide');
             $("#loaderClass").addClass('hide');
         },
@@ -272,6 +280,9 @@ function startNewChat() {
 }
 
 function openCoversation(elem) {
+    currentChatId = '#'+elem.id;
+    $('.clickable').css('background-color', '#f44336');
+    $(currentChatId).css('background-color', '#ffc107');
     $('#currentConvoUserName')[0].innerText = elem.children[0].children[0].children[1].children[0].innerText;
     $('#currentConvoLabel')[0].innerText = 'online';
 
@@ -325,7 +336,15 @@ function initiateSignalR() {
     }).catch(err => console.error(err.toString())).then(function () { });
 }
 
+function getUserName() {
+    if (localStorage.getItem('userName')) {
+        $('#nameOfUser').text(localStorage.getItem('userName'));
+        $('#title').css('margin-left', '125px');
+    }
+}
+
 $(document).ready(() => {
+    getUserName();
     getAllUserChatAccounts();
     getUserChat();
     showModal();

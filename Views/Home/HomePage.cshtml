@@ -31,7 +31,9 @@
         <div class="custom-navbar">
             <ul class="nav nav-tabs nav-justified">
                 <li class="active">
-                    <label class="title">Chat-Messenger</label>
+                    <label id="title" class="title">Chat-Messenger</label>
+                    <label class="info" style="white-space: nowrap;">Logged-In as: &nbsp;</label>
+                    <label id="nameOfUser" class="name"></label>
                 </li>
             </ul>
         </div>
@@ -49,7 +51,7 @@
             <div class="right-panel">
                 <div id="custom-card-header" class="card-header hidden" style="height: auto;">
                     <div class="card-content dflex" style="padding: 5px 7px; border-bottom: 1px solid grey; height: auto;">
-                        <div id="img-div" class="img-circle fake-img hidden" style="flex: 4%;">
+                        <div id="img-div" class="img-circle fake-img hidden"> <!-- style="flex: 4%;" -->
                             <img src="~/assets/chat-avatar.png" class="image" alt="chat-avatar" />
                         </div>
                         <div id="cardDetails" class="dflexcol card-details">
@@ -63,11 +65,11 @@
                         <tbody id="custom-table-body2"></tbody>
                     </table>
                 </div>
-                <div id="cardFooter" class="card-footer hidden" style="height: 16%;">
-                    <div class="container-fluid p-2" style="height: 100%;">
-                        <div class="dflex custom-inputdiv" style="height: 100%; padding: 6px; align-items: center;">
+                <div id="cardFooter" class="card-footer hidden" style="height: 12%;">
+                    <div class="container-fluid p-15" style="height: 100%;">
+                        <div class="dflex custom-inputdiv">
                             <textarea rows="2" id="messageBox" title="Enter Message" placeholder="Type a message" type="text" class="custom-inputtextarea"></textarea>
-                            <button type="button" title="Send Message" class="custom-button" style="height: 75%;"
+                            <button type="button" title="Send Message" class="custom-button"
                                     onclick="sendMessage()">
                                 <i class="fas fa-paper-plane"></i>
                             </button>

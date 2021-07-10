@@ -47,11 +47,21 @@
     padding-right: 2px;
 }
 
+.p-15 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .custom-navbar {
     height: 100%;
     margin: 2px;
     padding: 8px 8px 12px 8px;
     background-color: #4CB5F5;
+}
+
+.active {
+    display: flex !important;
+    width: 100% !important;
 }
 
 .title {
@@ -67,6 +77,13 @@
     font-size: x-large;
     color: white;
     text-shadow: 3px 3px 3px black;
+    width: 100%;
+}
+
+.info, .name {
+    float: right;
+    font-size: 10px;
+    width: auto;
 }
 
 .left-panel {
@@ -74,6 +91,9 @@
     height: 100%;
     background-color: #375E97;
     overflow: auto;
+    padding: 4px;
+    display: flex;
+    width: 100%;
 }
 
 .right-panel {
@@ -82,12 +102,15 @@
     background-color: #d7d7e8;
     display: flex;
     flex-flow: column nowrap;
+    display: flex;
+    width: 75%;
 }
 
 .card-header {
     width: 100%;
     padding: 0px;
     flex-wrap: nowrap;
+    height: auto;
 }
 
 .card-body {
@@ -95,14 +118,16 @@
     padding: 2px;
     flex-wrap: nowrap;
     font-family: 'Ubuntu', sans-serif;
+    height: 60px;
 }
 
 .fake-img {
     background-color: dimgrey;
-    flex: 3% 1;
-    height: 67px;
+    /*flex: 3% 1;*/
+    /*height: 67px;*/
     align-self: center;
     border-radius: 50%;
+    width: 55px;
 }
 
 .image {
@@ -117,9 +142,11 @@
 }
 
 .card-details {
-    padding: 7px;
-    flex: 60% ;
+    padding: 2px 7px;
+    flex: 60%;
     margin-left: 4px;
+    flex-wrap: nowrap;
+    width: 60%;
 }
 
 .custom-margin-block {
@@ -127,11 +154,17 @@
     margin-block-end: 4px;
 }
 
+.custom-inputdiv {
+    height: 100%;
+    padding: 5px;
+    align-items: center;
+}
+
 .custom-inputtextarea {
-    border-radius: 11px;
+    border-radius: 15px;
     border: 0px;
     flex: 90%;
-    padding: 14px 14px 10px 14px;
+    padding: 13px 14px 10px 14px;
     border: 1px solid #292828;
     
     font-size: 15px;
@@ -141,18 +174,20 @@
 }
 
     .custom-inputtextarea:focus, .custom-inputtextarea:active:focus, .custom-inputtextarea:focus-visible {
-        border-radius: 10px;
+        border-radius: 15px;
         outline: 0px;
     }
 
 .custom-button {
     flex: 2%;
-    height: 100%;
-    margin-left: 4px;
+/*    margin-left: 4px;*/
     border-radius: 10px;
     border: 0px;
     font-size: 2em;
     background: transparent;
+/*    height: 75%;*/
+    height: 85%;
+    margin-left: 10px;
 }
 
     .custom-button:focus, .custom-button:active:focus, .custom-button:focus-visible {
@@ -160,10 +195,34 @@
         outline: 0px;
     }
 
+.custom-row1 {
+    /*padding: 3px;*/
+    /*border-bottom: 1px solid grey;*/
+    border-bottom: 4px solid #375E97;
+    border-radius: 15px;
+    padding: 4px 6px;
+    width: 100%;
+}
+
+    .custom-row1 > .card-body {
+        color: black;
+    }
+
 input:focus-visible {
     border-radius: 10px;
     border: 1px solid black;
     outline: 0px;
+}
+
+#custom-table {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+#custom-table-body1 {
+    width: 100%;
 }
 
 #custom-table-body2 tr td {
@@ -173,6 +232,10 @@ input:focus-visible {
 .custom-header {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 75%;
 }
 
 .custom-label {
@@ -261,8 +324,21 @@ input:focus-visible {
 
 .clickable {
     cursor: pointer !important;
-    background-color: #FB6542;
+    /*    background-color: #FB6542;*/
+    /*   background-color: yellowgreen;*/
+    /*background-color: #d2cbd2;*/
+    background-color: #f44336;
+    display: flex;
+    border-radius: 15px;
 }
+
+    .clickable:hover {
+        background-color: #ccc;
+    }
+
+/*    .clickable:focus, .clickable:active, .clickable:focus-visible {
+        background-color: #ffc107 !important;
+    }*/
 
 @media only screen and (max-width: 1300px) {
     .card-details {
@@ -364,6 +440,12 @@ input:focus-visible {
 
     .right-panel {
         flex: 53%;
+    }
+}
+
+@media only screen and (max-width: 1020px) {
+    .main {
+        width: 1000px;
     }
 }
 
