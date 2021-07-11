@@ -366,7 +366,7 @@ namespace Chat_Messenger.Controllers
 
             if (user != null)
             {
-                ModelState.AddModelError("", "User already Exists!");
+                ModelState.AddModelError("error_description", "User already Exists! Please Sign in");
                 return BadRequest(ModelState);
             }
 

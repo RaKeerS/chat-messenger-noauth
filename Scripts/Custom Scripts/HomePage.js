@@ -150,7 +150,7 @@ function registerUser() {
             $("#loaderClass").addClass('hide');
         },
         error: function (jqXHR) {
-            alert(JSON.parse(jqXHR.responseText).error_description);
+            alert(JSON.parse(jqXHR.responseText).modelState.error_description.toString());
             $("#loaderClass").addClass('hide');
         }
     });
