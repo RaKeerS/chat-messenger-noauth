@@ -170,7 +170,6 @@ function getToken() {
         method: 'POST',
         data: _data,
         success: function (jqXHR) {
-            /*localStorage.setItem('access_token', jqXHR['access_token']);*/
             localStorage.setItem('expires', jqXHR['.expires']);
             localStorage.setItem('issued', jqXHR['.issued']);
             localStorage.setItem('userName', jqXHR['userName']);

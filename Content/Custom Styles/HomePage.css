@@ -123,8 +123,6 @@
 
 .fake-img {
     background-color: dimgrey;
-    /*flex: 3% 1;*/
-    /*height: 67px;*/
     align-self: center;
     border-radius: 50%;
     width: 55px;
@@ -180,12 +178,10 @@
 
 .custom-button {
     flex: 2%;
-/*    margin-left: 4px;*/
     border-radius: 10px;
     border: 0px;
     font-size: 2em;
     background: transparent;
-/*    height: 75%;*/
     height: 85%;
     margin-left: 10px;
 }
@@ -196,8 +192,6 @@
     }
 
 .custom-row1 {
-    /*padding: 3px;*/
-    /*border-bottom: 1px solid grey;*/
     border-bottom: 4px solid #375E97;
     border-radius: 15px;
     padding: 4px 6px;
@@ -324,9 +318,6 @@ input:focus-visible {
 
 .clickable {
     cursor: pointer !important;
-    /*    background-color: #FB6542;*/
-    /*   background-color: yellowgreen;*/
-    /*background-color: #d2cbd2;*/
     background-color: #f44336;
     display: flex;
     border-radius: 15px;
@@ -335,10 +326,6 @@ input:focus-visible {
     .clickable:hover {
         background-color: #ccc;
     }
-
-/*    .clickable:focus, .clickable:active, .clickable:focus-visible {
-        background-color: #ffc107 !important;
-    }*/
 
 @media only screen and (max-width: 1300px) {
     .card-details {
